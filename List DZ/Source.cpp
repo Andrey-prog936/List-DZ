@@ -34,7 +34,6 @@ public:
 		return *this;
 	}
 	
-	
 	void AddToHead(T value)
 	{
 		Node* newElem = new Node;
@@ -107,10 +106,7 @@ public:
 	}
 	void DeleteAll()
 	{
-		while (!IsEmpty())
-		{
-			DeleteHead();
-		}
+		~List();
 		this->size = 0;
 	}
 	bool IsEmpty() const
@@ -118,7 +114,7 @@ public:
 		return head == nullptr;
 	}
 	
-	int Search(int value)
+	int Search(T value)
 	{
 		cout << "~~~Result searching~~~" << endl;
 		Node* temp = head;
@@ -126,13 +122,14 @@ public:
 		{
 			if (temp->value == value)
 			{
-				cout << i << endl;
+				// return i + 1; not work(
+				cout << i + 1 << endl;
 			}
 			temp = temp->next;
 		}
 		return -1;
 	}
-
+	
 	void Show() const
 	{
 		Node* current = head;
@@ -151,15 +148,6 @@ public:
 			current = current->next;
 		}
 		cout <<"\nSize: "<< size << endl<<endl;
-	}
-
-	List& operator++(int)
-	{
-		AddToTail(0);
-	}
-	List& operator++()
-	{
-		AddToTail(0);
 	}
 	
 	~List()
@@ -217,6 +205,7 @@ int main()
 	ls.AddToHead(15);
 	ls.AddToHead(5);
 	ls.AddToHead(20);
+	ls.AddToTail(99);
 	//
 	ls.Show();
 	ls.InsertIndex(999,3);
